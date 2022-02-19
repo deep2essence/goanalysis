@@ -1,0 +1,1 @@
+rootdir = "/media/gustav/Investigation"

@@ -20,7 +20,7 @@ def runscript(script):
         result = subprocess.getoutput(script).split("\n")
     return result
 
-rootdir = "/home/frank/Code"#"/media/gustav/Investigation"
+from config import rootdir
 resultdir = os.path.abspath("results")
     
 def generateMods():
@@ -58,17 +58,22 @@ def analyze():
     # Show modules which are referenced by all.
     from collections import Counter
     occurrences = Counter(modules_all).most_common()
-    # print(occurrences)
+    print(occurrences)
     max_cnt = len(os.listdir(resultdir))
     commons = []
     for key,value in occurrences:
         if value == max_cnt: commons.append(key)
+    list2file(os.path.join(resultdir,"common.lst"),commons) 
     # Show its own modules
-    for key, value in moduledict:
-        for common in commons: value.remove()
-        with open(os.path.join(resultdir,"%s.own.lst"%key), "wb") as fp:
-             import pickle
-             pickle.dump(value,fp)
+    for key, value in moduledict.items():
+        for common in commons: 
+            value.remove(common)
+        list2file(os.path.join(resultdir,"%s.own.lst"%key),value)
+
+def list2file(filepath,values):
+    with open(filepath, 'w') as output:
+        for row in values:
+            output.write(str(row) + '\n')
 
 if __name__ == "__main__":
     analyze()

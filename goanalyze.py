@@ -24,7 +24,7 @@ def runscript(script):
     return result
 
 from config import rootdir
-resultdir = os.path.abspath("results")
+resultdir = os.path.abspath("output")
     
 # Generate mod file by executing `git list -m all` in the corresponding directory.    
 def generateMods():

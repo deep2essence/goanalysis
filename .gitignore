@@ -1,4 +1,4 @@
-results/
-*.lst
+output/
+repo.lst
 __pycache__
 *.pyc

@@ -1,2 +1,4 @@
 results/
 *.lst
+__pycache__
+*.pyc

@@ -36,7 +36,7 @@ def generateMods():
             approved=input("{0} not found. Do you want download it?(N/Y)".format(value))
             if 'Y' in approved:
                 subpath=value[:-1*len(value.split("/")[2])]
-                script="cd {0};git clone https://{1}; cd -".format(rootpath,value)
+                script="cd {0};git clone https://{1}; cd -".format(rootdir,value)
         modfile=os.path.join(dirpath,"go.mod")
         if not os.path.exists(modfile): continue
         #print(modfile)
